@@ -6,13 +6,8 @@ require "tmpdir"
 require "json"
 
 RSpec.describe Metanorma::Mko::Mcp::Server do
-  let(:xml) do
-    File.read(File.expand_path("../../fixtures/standoc/requirements/document.xml",
-                               __dir__), encoding: "utf-8")
-  end
-  let(:dir) { Dir.mktmpdir("mko-mcp") }
   let(:bundle) do
-    Metanorma::Mko.export(xml, to: dir).path
+    File.expand_path("../../fixtures/bundles/requirements.mko", __dir__)
   end
   let(:server) { described_class.new(bundle) }
 
@@ -22,7 +17,6 @@ RSpec.describe Metanorma::Mko::Mcp::Server do
     JSON.parse(server.handle(JSON.generate(line)))
   end
 
-  after { FileUtils.remove_entry(dir) }
 
   it "initializes and lists the contract tools" do
     init = rpc(1, "initialize")
@@ -57,8 +51,8 @@ RSpec.describe Metanorma::Mko::Mcp::Server do
   end
 
   it "answers edition diffs" do
-    edition_b = xml.sub("±0.1 %", "±0.05 %")
-    b = Metanorma::Mko.export(edition_b, to: File.join(dir, "b")).path
+    b = File.expand_path("../../fixtures/bundles/requirements-edition-b.mko",
+                         __dir__)
     res = rpc(6, "tools/call",
               { "name" => "edition_diff",
                 "arguments" => { "bundle_a" => bundle, "bundle_b" => b } })

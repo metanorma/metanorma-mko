@@ -1,0 +1,11 @@
+{"from":"u:sensor-requirements","to":"u:sensor-requirements","kind":"variant_of"}
+{"from":"u:req-sensor-accuracy","to":"u:req-sensor-accuracy","kind":"variant_of"}
+{"from":"u:req-battery","to":"u:req-battery","kind":"variant_of"}
+{"from":"u:req-battery-life","to":"u:req-battery-life","kind":"variant_of"}
+{"from":"u:rec-calibration","to":"u:rec-calibration","kind":"variant_of"}
+{"from":"u:perm-maintenance","to":"u:perm-maintenance","kind":"variant_of"}
+{"from":"u:_annex-terms","to":"u:_annex-terms","kind":"variant_of"}
+{"from":"u:_annex-terms-sec","to":"u:_annex-terms-sec","kind":"variant_of"}
+{"from":"u:_term-annex-load-cell","to":"u:_term-annex-load-cell","kind":"variant_of"}
+{"from":"u:_rf-norm","to":"u:_rf-norm","kind":"variant_of"}
+{"from":"u:SNR0","to":"u:SNR0","kind":"variant_of"}

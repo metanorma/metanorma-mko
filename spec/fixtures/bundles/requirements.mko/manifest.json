@@ -1,0 +1,57 @@
+{
+  "schema": "metanorma-mko",
+  "schema_version": "1.0.0",
+  "generated": {
+    "tool": "metanorma-document",
+    "schema_version": "1.0.0",
+    "flavor": "ogc",
+    "timestamp": "2026-09-01T06:55:09Z"
+  },
+  "components": [
+    {
+      "name": "document",
+      "file": "document.json",
+      "media_type": "application/json",
+      "hash": "sha256:417685251b90a2e8d3ae702480592b6b02f83a407161e6fd0b5babb352b15b6d"
+    },
+    {
+      "name": "bibdata",
+      "file": "bibdata.json",
+      "media_type": "application/json",
+      "hash": "sha256:11aa50538b39891d28658f0793723c17df686b9fabfa0fc8806def28c9328af5"
+    },
+    {
+      "name": "identifiers",
+      "file": "identifiers.json",
+      "media_type": "application/json",
+      "hash": "sha256:a71b88b805b5c592b4516895f1664151da2bfb143c7506d1ee6432f4900f23d2"
+    },
+    {
+      "name": "glossary",
+      "file": "glossary.json",
+      "media_type": "application/json",
+      "hash": "sha256:3bdd679bb9ec6e3c65e659c3ef8771f6d87fdbbc43f89d89040ee5373e029551"
+    },
+    {
+      "name": "bibliography",
+      "file": "bibliography.jsonl",
+      "media_type": "application/jsonl",
+      "count": 1,
+      "hash": "sha256:6496922ed442713a830f5f147b88ad056d4ecfeb5c9f9371e9e57eba0b332a85"
+    },
+    {
+      "name": "units",
+      "file": "units.jsonl",
+      "media_type": "application/jsonl",
+      "count": 11,
+      "hash": "sha256:15ff922c1250eb01e7f40fb298e9c74090f80e094f2fead34616b63cb3c184b1"
+    },
+    {
+      "name": "edges",
+      "file": "edges.jsonl",
+      "media_type": "application/jsonl",
+      "count": 15,
+      "hash": "sha256:7783eeebfdbeb3a12bf643407bb65da9f2c577748eab2b6fcb3f91ca3107cf00"
+    }
+  ]
+}

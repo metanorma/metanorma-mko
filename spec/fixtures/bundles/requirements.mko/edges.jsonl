@@ -1,0 +1,15 @@
+{"from":"u:req-sensor-accuracy","to":"u:sensor-requirements","kind":"part_of"}
+{"from":"u:req-sensor-accuracy","to":"class:accuracy","kind":"class_of"}
+{"from":"u:req-battery","to":"u:sensor-requirements","kind":"part_of"}
+{"from":"u:req-battery","to":"class:battery","kind":"class_of"}
+{"from":"u:req-battery-life","to":"u:req-battery","kind":"part_of"}
+{"from":"u:rec-calibration","to":"u:sensor-requirements","kind":"part_of"}
+{"from":"u:perm-maintenance","to":"u:sensor-requirements","kind":"part_of"}
+{"from":"u:_annex-terms-sec","to":"u:_annex-terms","kind":"part_of"}
+{"from":"u:_term-annex-load-cell","to":"u:_annex-terms-sec","kind":"part_of"}
+{"from":"u:_term-annex-load-cell","to":"concept:_term-annex-load-cell","kind":"defines"}
+{"from":"u:SNR0","to":"u:_rf-norm","kind":"part_of"}
+{"from":"u:SNR0","to":"ext:SNR-0","kind":"cites"}
+{"from":"doc:snr-1","to":"ext:SNR-0","kind":"obsoletes"}
+{"from":"doc:snr-1","to":"ext:SNR-2","kind":"hasPart"}
+{"from":"doc:snr-1","to":"ext:SNR-3","kind":"hasSuccessor"}

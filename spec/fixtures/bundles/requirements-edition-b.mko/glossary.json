@@ -1,0 +1,26 @@
+{
+  "concepts": [
+    {
+      "data": {
+        "definition": [
+          {
+            "content": "a load cell defined in an annex"
+          }
+        ],
+        "examples": [],
+        "id": "_term-annex-load-cell-eng",
+        "notes": [],
+        "terms": [
+          {
+            "type": "expression",
+            "normative_status": "preferred",
+            "designation": "annex load cell"
+          }
+        ],
+        "language_code": "eng",
+        "entry_status": "valid"
+      },
+      "id": "a02b4503-54c6-5ced-bfac-8d4cd94e13ae"
+    }
+  ]
+}

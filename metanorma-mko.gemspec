@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/metanorma/mko"
+require_relative "lib/metanorma/mko/version"
 
 Gem::Specification.new do |spec|
   spec.name = "metanorma-mko"
-  spec.version = Metanorma::Mko::SCHEMA_VERSION
+  spec.version = Metanorma::Mko::VERSION
   spec.authors = ["Ribose Inc."]
   spec.email = ["open.source@ribose.com"]
 
@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "lutaml-model", "~> 0.8"
   spec.add_runtime_dependency "rubyzip"
 
-  spec.add_development_dependency "metanorma-document", github: "metanorma/metanorma-document", branch: "feat/model-validation-l1-declarations" if ENV["MKO_DEV_DOCUMENT"]
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rubocop", "~> 1"
 end

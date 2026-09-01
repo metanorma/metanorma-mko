@@ -1,0 +1,98 @@
+{
+  "id": "SNR1",
+  "schema_version": "v1.5.6",
+  "type": "standard",
+  "title": [
+    {
+      "language": "en",
+      "content": "Sensor network requirements",
+      "type": "main"
+    }
+  ],
+  "docidentifier": [
+    {
+      "content": "SNR-1",
+      "type": "ogc-internal",
+      "primary": true
+    }
+  ],
+  "docnumber": "1",
+  "contributor": [
+    {
+      "role": [
+        {
+          "type": "publisher"
+        }
+      ],
+      "organization": {
+        "name": [
+          {
+            "content": "Metanorma"
+          }
+        ]
+      }
+    }
+  ],
+  "edition": {
+    "content": "1"
+  },
+  "language": [
+    "en"
+  ],
+  "status": {
+    "stage": {
+      "content": "published"
+    }
+  },
+  "copyright": [
+    {
+      "from": "2026",
+      "owner": [
+        {
+          "organization": {
+            "name": [
+              {
+                "content": "Metanorma"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "relation": [
+    {
+      "type": "obsoletes",
+      "bibitem": {
+        "docidentifier": [
+          {
+            "content": "SNR-0",
+            "type": "ogc-internal"
+          }
+        ]
+      }
+    },
+    {
+      "type": "hasPart",
+      "bibitem": {
+        "docidentifier": [
+          {
+            "content": "SNR-2",
+            "type": "ogc-internal"
+          }
+        ]
+      }
+    },
+    {
+      "type": "hasSuccessor",
+      "bibitem": {
+        "docidentifier": [
+          {
+            "content": "SNR-3",
+            "type": "ogc-internal"
+          }
+        ]
+      }
+    }
+  ]
+}

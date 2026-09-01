@@ -1,0 +1,48 @@
+{
+  "ids": {
+    "canonical": "SNR-1",
+    "short": "snr-1",
+    "docid": [
+      "SNR-1"
+    ]
+  },
+  "flavor": "ogc",
+  "titles": [
+    {
+      "lang": "en",
+      "text": "Sensor network requirements"
+    }
+  ],
+  "edition": "1",
+  "languages": [
+    "en"
+  ],
+  "status": {
+    "stage": "published"
+  },
+  "derived_status": "superseded",
+  "relations": [
+    {
+      "type": "obsoletes",
+      "to": "SNR-0"
+    },
+    {
+      "type": "hasPart",
+      "to": "SNR-2"
+    },
+    {
+      "type": "hasSuccessor",
+      "to": "SNR-3"
+    }
+  ],
+  "structure": [
+    {
+      "id": "u:sensor-requirements",
+      "title": "Sensor requirements"
+    },
+    {
+      "id": "u:_annex-terms",
+      "title": "Additional terms"
+    }
+  ]
+}

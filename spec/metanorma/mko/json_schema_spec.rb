@@ -28,9 +28,9 @@ RSpec.describe Metanorma::Mko::Schema::JsonSchema do
   end
 
   it "covers every typed payload a real bundle ships, with wire names" do
-    dir = Dir.mktmpdir("schema-drift")
-    begin
-      bundle = Metanorma::Mko.export(xml, to: dir)
+      bundle = File.expand_path("../../fixtures/bundles/requirements.mko",
+                                __dir__)
+      begin
       units = File.readlines(File.join(bundle, "units.jsonl"))
                   .map { |l| JSON.parse(l) }
       payloads = units.group_by { |u| u["type"] }
@@ -42,8 +42,6 @@ RSpec.describe Metanorma::Mko::Schema::JsonSchema do
           expect(err).to be_nil, err.to_s
         end
       end
-    ensure
-      FileUtils.remove_entry(dir)
     end
   end
 

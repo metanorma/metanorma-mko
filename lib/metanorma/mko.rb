@@ -18,6 +18,7 @@ module Metanorma
   # projection walk, collection orchestration, flavor resolution — and
   # composes this gem to export.
   module Mko
+    autoload :VERSION, "metanorma/mko/version"
     autoload :Schema, "metanorma/mko/schema"
     autoload :Bundle, "metanorma/mko/bundle"
     autoload :Writer, "metanorma/mko/writer"
@@ -28,8 +29,10 @@ module Metanorma
     autoload :Diff, "metanorma/mko/diff"
     autoload :Mcp, "metanorma/mko/mcp"
 
+    autoload :VERSION, "metanorma/mko/version"
+
     SCHEMA = "metanorma-mko"
-    SCHEMA_VERSION = "1.0.0"
+    SCHEMA_VERSION = VERSION
 
     class << self
       # The published wire contract, generated from the schema classes
