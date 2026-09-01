@@ -1,0 +1,44 @@
+= metanorma-mko
+
+Metanorma Knowledge Objects (MKO, MN 116) — the machine serialization
+format for Metanorma documents, as code.
+
+== What this gem owns
+
+The FORMAT contract:
+
+* the MN 116 wire schema (typed units, edges, document identity,
+  manifest) as lutaml-model classes — `Metanorma::Mko::Schema`;
+* the bundle layout and manifest verification — `Mko::Bundle`,
+  `Mko::Writer`;
+* hash-addressed assets (`Mko::Assets`);
+* structured edition diffs (`Mko::Diff`) and interlingual alignment
+  (`Mko::Alignment`);
+* the generated JSON Schemas — `Mko.json_schemas` (the schema classes
+  are the single source of truth; TS/Python consumers validate against
+  these, never hand-rolled copies);
+* the reference MCP server over any conforming bundle —
+  `Mko::Mcp::Server` (search_units / get_unit / walk_edges /
+  edition_diff; JSON-RPC 2.0 over stdio).
+
+== What it does not own
+
+The model side — the projection walk, collection orchestration, flavor
+resolution — lives in
+https://github.com/metanorma/metanorma-document[metanorma-document],
+which depends on this gem and reopens `Metanorma::Mko` with the export
+entry points (`Mko.export`, `Mko::Collection.export`).
+
+== Usage
+
+Consumers validate against the published contract:
+
+[source,ruby]
+require "metanorma/mko"
+Metanorma::Mko.json_schemas["unit"]
+# => { "$schema" => "https://json-schema.org/draft/2020-12/schema", ... }
+
+Agent consumers mount the reference MCP server:
+
+[source,ruby]
+Metanorma::Mko::Mcp::Server.new("oiml-r-60-1.mko").run
