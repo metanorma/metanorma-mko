@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "lutaml-model", "~> 0.8"
   spec.add_runtime_dependency "rubyzip"
+  spec.add_runtime_dependency "unitsml", "~> 0.6"
 
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.0"

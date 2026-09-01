@@ -5,11 +5,16 @@ module Metanorma
     module Schema
       class TableColumn < Lutaml::Model::Serializable
         attribute :label, :string
+        # typed column: unit references the units register (#55 GAP-2)
+        attribute :type, :string
         attribute :unit, :string
+        attribute :units, :string
 
         json do
           map "label", to: :label
-          map "unit", to: :unit
+          map "type", to: :type, render_nil: false
+          map "unit", to: :unit, render_nil: false
+          map "units", to: :units, render_nil: false
         end
       end
 
@@ -41,15 +46,34 @@ module Metanorma
       class FormulaPayload < Lutaml::Model::Serializable
         attribute :asciimath, :string
         attribute :mathml, :string
-        attribute :latex, :string
-        attribute :omml, :string
+        # units register references (units.jsonl entry ids)
+        attribute :units, :string, collection: true, default: -> { [] }
+        # reserved: evaluation forms (typed params + expression in a
+        # declared language); absent unless authored (#55 GAP-3)
+        attribute :semantics, :hash
         attribute :description, :string
+
+        # Derived encodings — never canonical; each names its converter
+        # (#55: re-encoding at the producer is a provenance break)
+        class DerivedForm < Lutaml::Model::Serializable
+          attribute :form, :string
+          attribute :converter, :string
+
+          json do
+            map "form", to: :form
+            map "converter", to: :converter
+          end
+        end
+        attribute :latex, DerivedForm
+        attribute :omml, DerivedForm
 
         json do
           map "asciimath", to: :asciimath
           map "mathml", to: :mathml
-          map "latex", to: :latex
-          map "omml", to: :omml
+          map "units", to: :units, render_empty: false
+          map "semantics", to: :semantics, render_nil: false
+          map "latex", to: :latex, render_nil: false
+          map "omml", to: :omml, render_nil: false
           map "description", to: :description
         end
       end

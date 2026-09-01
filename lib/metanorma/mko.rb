@@ -28,6 +28,7 @@ module Metanorma
     autoload :Alignment, "metanorma/mko/alignment"
     autoload :Diff, "metanorma/mko/diff"
     autoload :Mcp, "metanorma/mko/mcp"
+    autoload :Units, "metanorma/mko/units"
 
     autoload :VERSION, "metanorma/mko/version"
 
