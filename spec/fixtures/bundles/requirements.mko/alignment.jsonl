@@ -1,4 +1,5 @@
 {"from":"u:sensor-requirements","to":"u:sensor-requirements","kind":"variant_of"}
+{"from":"u:formula-temp","to":"u:formula-temp","kind":"variant_of"}
 {"from":"u:req-sensor-accuracy","to":"u:req-sensor-accuracy","kind":"variant_of"}
 {"from":"u:req-battery","to":"u:req-battery","kind":"variant_of"}
 {"from":"u:req-battery-life","to":"u:req-battery-life","kind":"variant_of"}

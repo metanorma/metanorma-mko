@@ -5,7 +5,7 @@
     "tool": "metanorma-document",
     "schema_version": "1.0.0",
     "flavor": "ogc",
-    "timestamp": "2026-09-01T06:55:09Z"
+    "timestamp": "2026-09-02T10:53:01Z"
   },
   "components": [
     {
@@ -43,15 +43,22 @@
       "name": "units",
       "file": "units.jsonl",
       "media_type": "application/jsonl",
-      "count": 11,
-      "hash": "sha256:15707a2237488642e061b03858466b1da409fb55812e3f72f817082cd6508db2"
+      "count": 12,
+      "hash": "sha256:7037d64e3191bb1fdead7280403d90d2e2fd52ba0f50377f5b966e6c70f4990a"
     },
     {
       "name": "edges",
       "file": "edges.jsonl",
       "media_type": "application/jsonl",
-      "count": 15,
-      "hash": "sha256:7783eeebfdbeb3a12bf643407bb65da9f2c577748eab2b6fcb3f91ca3107cf00"
+      "count": 16,
+      "hash": "sha256:be179281926c9ce0e3624603386f9232537d80efc5cd4f31d452531c18e32a9c"
+    },
+    {
+      "name": "unitsml",
+      "file": "unitsml.jsonl",
+      "media_type": "application/jsonl",
+      "count": 1,
+      "hash": "sha256:6684f971da425f26d0e2adfd765c2f5330760308e15cf9560cc061d924b4b954"
     }
   ]
 }

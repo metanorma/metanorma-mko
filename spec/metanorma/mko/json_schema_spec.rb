@@ -64,6 +64,17 @@ RSpec.describe Metanorma::Mko::Schema::JsonSchema do
     end
   end
 
+  it "carries the hierarchy contract: ordinal + section payloads (#56)" do
+    unit = schemas["unit"]["properties"]
+    expect(unit["ordinal"]).to eq("type" => "integer")
+    %w[payload-clause payload-annex].each do |key|
+      props = schemas[key]["properties"]
+      expect(props).to include("summary", "children")
+      expect(props["children"]).to eq("type" => "array",
+                                      "items" => { "type" => "string" })
+    end
+  end
+
   it "defines the consumer excerpt with unit_id, type, payload" do
     block = schemas["excerpt"]["properties"]["blocks"]["items"]
     expect(block["required"]).to eq(%w[unit_id type payload])
