@@ -35,14 +35,14 @@ RSpec.describe Metanorma::Mko::Units do
     expect(h["dimension"]).to eq("Θ")
   end
 
-  it "writes units.jsonl" do
+  it "writes unitsml.jsonl" do
     require "tmpdir"
     require "fileutils"
     dir = Dir.mktmpdir("units")
     begin
       entries = described_class.parse(unitsml_xml)
       described_class.write(entries, dir)
-      lines = File.readlines(File.join(dir, "units.jsonl"))
+      lines = File.readlines(File.join(dir, "unitsml.jsonl"))
                   .map { |l| JSON.parse(l) }
       expect(lines.first["id"]).to eq("U_degC")
     ensure

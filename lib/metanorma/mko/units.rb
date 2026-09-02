@@ -4,15 +4,25 @@ require "unitsml/model"
 
 module Metanorma
   module Mko
-    # Units register (#55 GAP-1): every unit the document uses, parsed
-    # from the source's UnitsML container via the unitsml gem's typed
-    # lutaml-model classes. Emitted as units.jsonl — one entry per
-    # line — and referenced by id from formula payloads and table
-    # columns. Consumers compare on quantity kinds, never unit strings.
+    # Units register (#55 GAP-1): every unit the document uses, carried
+    # by the model's typed UnitsML classes (or parsed from raw container
+    # XML). Emitted as unitsml.jsonl — one entry per line — and
+    # referenced by id from formula payloads and table columns.
+    # Consumers compare on quantity kinds, never unit strings.
     module Units
       Entry = Struct.new(:id, :symbol, :name, :quantity_kind, :dimension,
                          :dimension_url, :si_to, :si_expression,
                          keyword_init: true)
+
+      # SI base-quantity symbols in canonical vector order: L M T I Θ N J
+      # plus plane angle. Shared by the XML parser and the model
+      # projection so both compose identical vectors.
+      BASE_QUANTITY_SYMBOLS = {
+        "Length" => "L", "Mass" => "M", "Time" => "T",
+        "ElectricCurrent" => "I", "ThermodynamicTemperature" => "Θ",
+        "AmountOfSubstance" => "N", "LuminousIntensity" => "J",
+        "PlaneAngle" => "φ"
+      }.freeze
 
       class << self
         # unitsml_xml: the <UnitsML> container XML (or the inner
@@ -32,10 +42,12 @@ module Metanorma
           units
         end
 
-        # Write units.jsonl into a bundle; returns the entry list.
+        # Write unitsml.jsonl into a bundle; returns the entry list.
         def write(entries, dir)
-          path = File.join(dir, "units.jsonl")
-          File.write(path, entries.map { |e| JSON.generate(entry_hash(e)) }.join("\n") + "\n")
+          path = File.join(dir, "unitsml.jsonl")
+          File.write(path,
+                     entries.map { |e| JSON.generate(entry_hash(e)) }
+                       .join("\n") + "\n")
           entries
         end
 
@@ -51,6 +63,17 @@ module Metanorma
               "expression" => entry.si_expression,
             } : nil,
           }.compact
+        end
+
+        # SI base-quantity vector from (symbol, powerNumerator,
+        # powerDenominator) triples: "M·L^2·T^-2", "Θ", ...
+        def vectorize(parts)
+          parts.filter_map do |sym, n, d|
+            next sym if n.nil? || (n == 1 && (d.nil? || d == 1))
+
+            exp = d && d != 1 ? "#{n || 1}/#{d}" : n.to_s
+            "#{sym}^#{exp}"
+          end.join("·")
         end
 
         private
@@ -73,16 +96,12 @@ module Metanorma
 
         # SI base-quantity vector: L M T I Θ N J + plane angle
         def dimension_vector(dim)
-          parts = []
-          { "Length" => "L", "Mass" => "M", "Time" => "T",
-            "ElectricCurrent" => "I", "ThermodynamicTemperature" => "Θ",
-            "AmountOfSubstance" => "N", "LuminousIntensity" => "J",
-            "PlaneAngle" => "φ" }.each do |el, sym|
+          parts = BASE_QUANTITY_SYMBOLS.map do |el, sym|
             node = dim.xpath("./#{el}").first or next
-            exp = node["powerN"] || node["powerD"]
-            parts << (exp && exp != "1" ? "#{sym}^#{exp}" : sym)
+            [sym, node["powerNumerator"]&.to_i,
+             node["powerDenominator"]&.to_i]
           end
-          parts.join("·")
+          vectorize(parts)
         end
       end
     end

@@ -8,10 +8,11 @@ module Metanorma
     # metanorma-document.
     class Result
       attr_reader :document, :units, :edges, :glossary, :bibdata,
-                  :bibliography, :identifiers, :assets, :flavor
+                  :bibliography, :identifiers, :assets, :unitsml, :flavor
 
       def initialize(document:, units:, edges:, glossary:, bibdata:,
-                     bibliography:, identifiers:, assets: [], flavor:)
+                     bibliography:, identifiers:, assets: [], unitsml: [],
+                     flavor:)
         @document = document
         @units = units
         @edges = edges
@@ -20,6 +21,7 @@ module Metanorma
         @bibliography = bibliography
         @identifiers = identifiers
         @assets = assets
+        @unitsml = unitsml
         @flavor = flavor
       end
     end

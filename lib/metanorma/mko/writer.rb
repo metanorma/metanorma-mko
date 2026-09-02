@@ -46,6 +46,14 @@ module Metanorma
           end
           bundle.add_lines("units", "units.jsonl", result.units)
           bundle.add_lines("edges", "edges.jsonl", result.edges)
+          # unitsml.jsonl: the units register, referenced by id from
+          # formula payloads and table columns (#55). Absent when the
+          # source carries no UnitsML container.
+          unless result.unitsml.empty?
+            bundle.add_lines("unitsml", "unitsml.jsonl", result.unitsml) do |e|
+              JSON.generate(Units.entry_hash(e))
+            end
+          end
           result.assets.each { |entry| bundle.add_asset(entry) }
         end
       end
