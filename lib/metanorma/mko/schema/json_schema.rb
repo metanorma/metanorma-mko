@@ -50,6 +50,8 @@ module Metanorma
               "payload-term" => schema_for(TermPayload),
               "payload-requirement" => schema_for(RequirementPayload),
               "payload-reference" => schema_for(ReferencePayload),
+              "payload-clause" => schema_for(SectionPayload),
+              "payload-annex" => schema_for(SectionPayload),
             }
             schemas["excerpt"] = excerpt_schema(schemas)
             schemas
@@ -68,7 +70,7 @@ module Metanorma
                 "payload" => {
                   "oneOf" => payload_schemas
                     .select { |name, _| name.start_with?("payload-") }
-                    .map { |_, s| s },
+                    .map { |_, s| s }.uniq,
                 },
               },
               "required" => %w[unit_id type payload],

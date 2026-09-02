@@ -141,6 +141,24 @@ module Metanorma
         end
       end
 
+      # Coverage of a section unit (#56): the deterministic summary and
+      # the ordered membership. Children are unit ids in document order;
+      # the same relation the part_of edges carry bottom-up, given here
+      # top-down so tree navigation never re-derives structure from
+      # anchor strings.
+      class SectionPayload < Lutaml::Model::Serializable
+        # deterministic composition (title + covered sub-clauses) —
+        # never model-inferred; consumers may override with their own
+        # LLM summaries, but the default requires none
+        attribute :summary, :string
+        attribute :children, :string, collection: true, default: -> { [] }
+
+        json do
+          map "summary", to: :summary
+          map "children", to: :children
+        end
+      end
+
       class ReferencePayload < Lutaml::Model::Serializable
         attribute :key, :string
         attribute :cited, :string
@@ -158,6 +176,10 @@ module Metanorma
         attribute :type, :string
         attribute :anchor, :string
         attribute :number, :string
+        # document order as an integer (#56): reading order is a sort,
+        # never a parse of dotted anchor strings. Position, not content —
+        # excluded from the content hash by contract.
+        attribute :ordinal, :integer
         # the anchor a READER cites (issue #50 follow-up 2): the parent
         # clause number for embedded objects (tables/formulas/figures),
         # the unit's own number for top-level sections. Consumers cite
@@ -181,6 +203,7 @@ module Metanorma
           map "type", to: :type
           map "anchor", to: :anchor
           map "number", to: :number
+          map "ordinal", to: :ordinal, render_nil: false
           map "cite_as", to: :cite_as
           map "title", to: :title
           map "parent", to: :parent
