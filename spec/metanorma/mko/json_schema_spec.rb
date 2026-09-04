@@ -75,6 +75,13 @@ RSpec.describe Metanorma::Mko::Schema::JsonSchema do
     end
   end
 
+  it "carries the language contract: lang with lang_source " \
+     "provenance (#53 item 3)" do
+    unit = schemas["unit"]["properties"]
+    expect(unit).to include("lang", "lang_source")
+    expect(unit["lang_source"]).to eq("type" => "string")
+  end
+
   it "defines the consumer excerpt with unit_id, type, payload" do
     block = schemas["excerpt"]["properties"]["blocks"]["items"]
     expect(block["required"]).to eq(%w[unit_id type payload])

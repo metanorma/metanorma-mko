@@ -190,6 +190,12 @@ module Metanorma
         attribute :breadcrumb, :string, collection: true, default: -> { [] }
         attribute :obligation, :string
         attribute :lang, :string
+        # provenance of lang (#53 item 3, Mko::Language): "markup"
+        # (xml:lang in scope), "heuristic" (detected from the unit's
+        # own text), "default" (the declared document language),
+        # "fallback" (undeclared and undetectable). Optional so
+        # pre-resolution bundles stay schema-valid.
+        attribute :lang_source, :string
         # authoring-time situating note (#53 item 7): AI-assisted,
         # editor-approved, versioned with the document. Wire-ready —
         # emitted the day the authoring system ships it.
@@ -210,6 +216,7 @@ module Metanorma
           map "breadcrumb", to: :breadcrumb
           map "obligation", to: :obligation
           map "lang", to: :lang
+          map "lang_source", to: :lang_source, render_nil: false
           map "ai_note", to: :ai_note, render_nil: false
           map "text", to: :text
           map "payload", to: :payload

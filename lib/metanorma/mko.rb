@@ -29,6 +29,7 @@ module Metanorma
     autoload :Diff, "metanorma/mko/diff"
     autoload :Mcp, "metanorma/mko/mcp"
     autoload :Units, "metanorma/mko/units"
+    autoload :Language, "metanorma/mko/language"
 
     autoload :VERSION, "metanorma/mko/version"
 
