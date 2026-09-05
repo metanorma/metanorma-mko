@@ -17,6 +17,14 @@ The FORMAT contract:
 * the generated JSON Schemas — `Mko.json_schemas` (the schema classes
   are the single source of truth; TS/Python consumers validate against
   these, never hand-rolled copies);
+* language resolution (`Mko::Language`) — W3C XML §2.12 nearest
+  ancestor-or-self `xml:lang`, then an honest stopword-ratio langid
+  (en/fr/es/de) over the element's own text, then the declared
+  document language, then an explicit `en` fallback. Every resolution
+  reports its provenance (`markup` / `heuristic` / `default` /
+  `fallback`); units carry it as `lang_source`. Consumer-side of
+  metanorma-standoc#1243: element-level `xml:lang` wins automatically
+  the day the converter emits it;
 * the reference MCP server over any conforming bundle —
   `Mko::Mcp::Server` (search_units / get_unit / walk_edges /
   edition_diff; JSON-RPC 2.0 over stdio).
