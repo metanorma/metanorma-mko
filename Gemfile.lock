@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    metanorma-mko (1.0.0)
+    metanorma-mko (1.1.0)
       lutaml-model (~> 0.8)
       rubyzip
       unitsml (~> 0.6)
@@ -182,7 +182,7 @@ CHECKSUMS
   lutaml-model (0.8.14) sha256=3304a55737b7381b724d6308736f7f50c4ebe68ec092dd20ffaa4e99d110bda4
   matrix (0.4.3) sha256=a0d5ab7ddcc1973ff690ab361b67f359acbb16958d1dc072b8b956a286564c5b
   memo_wise (1.13.0) sha256=30220c38c4cef410849bc73553c58664dc2c91c6379e4a1df22aea02358b716b
-  metanorma-mko (1.0.0)
+  metanorma-mko (1.1.0)
   mml (2.4.1) sha256=fe40926d5103dc2f56718c3cdc208d663f8c500f46c84a2272c2b5908f7a0e8d
   moxml (0.5.20) sha256=970ae6d0a89ee598748b51f593869e37779a1a66db5a74b31fdc33d1c23bcf1b
   nokogiri (1.19.4-arm64-darwin) sha256=a46db9853286e6597b36ebc6953817d15acf3a299583eb3f89fdc6f91dd63527
