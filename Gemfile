@@ -16,6 +16,9 @@ if ENV["METANORMA_CI_EDGE"]
   gem "lutaml-model", github: "lutaml/lutaml-model", branch: "main"
   gem "unitsml", github: "metanorma/unitsml", branch: "main"
 else
-  # 0.8.20 yanked; keep the lock below it
-  gem "lutaml-model", "~> 0.8.0", "< 0.8.20"
+  gem "leptris", "~> 1.9"
+  # TEMPORARY pin: the json 3.0 to_json fix (lutaml-model#769) — flip to
+  # the released version when it ships.
+  gem "lutaml-model", github: "lutaml/lutaml-model", branch: "fix/767-json-register-kwarg"
+  gem "moxml", "~> 0.5.30"
 end
