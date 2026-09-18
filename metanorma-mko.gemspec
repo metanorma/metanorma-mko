@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.files = Dir["lib/**/*.rb"] + %w[README.adoc LICENSE]
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "lutaml-model", "~> 0.8"
+  spec.add_runtime_dependency "lutaml-model", "~> 0.8", ">= 0.8.22"
   spec.add_runtime_dependency "rubyzip"
   spec.add_runtime_dependency "unitsml", "~> 0.6"
 
