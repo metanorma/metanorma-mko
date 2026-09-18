@@ -87,4 +87,27 @@ RSpec.describe Metanorma::Mko::Schema::JsonSchema do
     expect(block["required"]).to eq(%w[unit_id type payload])
     expect(block["properties"]["unit_id"]["pattern"]).to eq("\\Au:")
   end
+
+  # The OCP gate (TODO.impl/06): a payload class declared under Schema
+  # without a wire mapping in JsonSchema.all fails here, at CI, not at
+  # a consumer.
+  it "covers every payload class declared under Schema" do
+    declared = Metanorma::Mko::Schema.constants
+               .map { |c| Metanorma::Mko::Schema.const_get(c) }
+               .select { |k| k.is_a?(Class) && k.name.end_with?("Payload") }
+               .map { |k| k.name.split("::").last }
+    expected = {
+      "TablePayload" => %w[payload-table],
+      "FormulaPayload" => %w[payload-formula],
+      "FigurePayload" => %w[payload-figure],
+      "TermPayload" => %w[payload-term],
+      "RequirementPayload" => %w[payload-requirement],
+      "ReferencePayload" => %w[payload-reference],
+      "SectionPayload" => %w[payload-clause payload-annex],
+    }
+    expect(declared.sort).to eq(expected.keys.sort),
+      "a payload class lacks a wire mapping in JsonSchema.all"
+    mapped = expected.values.flatten
+    expect(schemas.keys & mapped).to contain_exactly(*mapped)
+  end
 end
