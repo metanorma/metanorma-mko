@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "lutaml-model", "~> 0.8", ">= 0.8.22"
-  spec.add_runtime_dependency "rubyzip"
+  spec.add_dependency "rubyzip", "~> 3.7"
   spec.add_runtime_dependency "unitsml", "~> 0.6"
 
   spec.add_development_dependency "rake", "~> 13.0"
