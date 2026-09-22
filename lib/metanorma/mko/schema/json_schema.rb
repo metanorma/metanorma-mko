@@ -108,7 +108,9 @@ module Metanorma
             @wire_names ||= {}
             @wire_names[klass] ||= begin
               mapping = klass.mappings_for(:json)
-              mapping.mappings_hash.values.each_with_object({}) do |rule, h|
+              # #88: per-key values are rule ARRAYS (when_attribute
+              # partitions) — flatten before walking.
+              mapping.mappings_hash.values.flatten.each_with_object({}) do |rule, h|
                 h[rule.to] = rule.name.to_s
               end
             end
