@@ -68,7 +68,7 @@ module Metanorma
       def zip!
         require "zip"
         zip_path = "#{dir}.zip"
-        Zip::File.open(zip_path, Zip::File::CREATE) do |zipfile|
+        Zip::File.open(zip_path, create: true) do |zipfile|
           Dir[File.join(dir, "**", "*")].each do |f|
             next if File.directory?(f)
 
