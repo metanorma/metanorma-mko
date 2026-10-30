@@ -4,10 +4,23 @@ source "https://rubygems.org"
 
 gemspec
 
-# A format gem: the spec suite is pure — committed fixture bundles, no
-# document-model dependency. The model side (projection walk, collection
-# orchestration) lives in metanorma-document, whose suite covers the
-# export integration end to end.
+# The wire contract specs are pure — committed fixture bundles. The
+# model side (projection walk, collection orchestration, export) is
+# served by metanorma-document; its specs parse ISO/ITU/OGC/Standoc
+# flavor documents, so the suite carries the same dev-time flavor
+# pins as the metanorma-document suite.
+gem "isodoc", github: "metanorma/isodoc", branch: "main"
+gem "metanorma-core", "~> 0.2.5.pre.alpha" # published flavor/taste table (metanorma-core#18)
+gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
+gem "metanorma-itu", github: "metanorma/metanorma-itu", branch: "main"
+gem "metanorma-mirror", github: "metanorma/metanorma-mirror", branch: "main"
+# model-side move: the gemspec floor is unreleased until both sides of
+# the decycle land; pin the removal branch until then
+gem "metanorma-document", github: "metanorma/metanorma-document",
+    branch: "chore/remove-mko-model-side"
+gem "metanorma-ogc", github: "metanorma/metanorma-ogc", branch: "main"
+# TEMPORARY pin: svgmap/imagemap/columnbreak section wiring
+gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
 #
 # Dependency sources. Default (no env vars): released gems, exactly the
 # contract downstream users get — CI and local dev must test that.

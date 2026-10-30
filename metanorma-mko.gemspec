@@ -23,6 +23,10 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "lutaml-model", "~> 0.8", ">= 0.8.22"
   spec.add_dependency "nokogiri", "~> 1.19"
   spec.add_dependency "rubyzip", "~> 3.7"
+  # The model side (projection walk, collection orchestration, export)
+  # composes the metanorma-document model trees (Root, ModelAccess,
+  # PlainText, NativeModels).
+  spec.add_dependency "metanorma-document", ">= 0.5.2"
   spec.add_runtime_dependency "unitsml", "~> 0.6"
 
   spec.add_development_dependency "rake", "~> 13.0"
