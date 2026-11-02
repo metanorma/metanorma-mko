@@ -29,5 +29,5 @@ if ENV["METANORMA_CI_EDGE"]
 else
   gem "leptris", "~> 1.9"
   gem "lutaml-model", "~> 0.8.0", ">= 0.8.22", "< 0.9"
-  gem "moxml", "~> 0.5.30"
+  gem "moxml", "~> 0.6.0"
 end
