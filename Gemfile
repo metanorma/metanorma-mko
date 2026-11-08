@@ -10,7 +10,7 @@ gemspec
 # flavor documents, so the suite carries the same dev-time flavor
 # pins as the metanorma-document suite.
 gem "isodoc", github: "metanorma/isodoc", branch: "main"
-gem "metanorma-core", "~> 0.2.5.pre.alpha" # published flavor/taste table (metanorma-core#18)
+gem "metanorma-core", "~> 0.2.7" # published flavor/taste table (metanorma-core#18)
 gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
 gem "metanorma-itu", github: "metanorma/metanorma-itu", branch: "main"
 gem "metanorma-mirror", github: "metanorma/metanorma-mirror", branch: "main"
