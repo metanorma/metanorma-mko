@@ -20,14 +20,9 @@ gem "metanorma-ogc", github: "metanorma/metanorma-ogc", branch: "main"
 # TEMPORARY pin: svgmap/imagemap/columnbreak section wiring
 gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
 #
-# Dependency sources. Default (no env vars): released gems, exactly the
+# Dependency sources: released gems from rubygems.org, exactly the
 # contract downstream users get — CI and local dev must test that.
-# METANORMA_CI_EDGE=1 -> track upstream main branches (bleeding-edge CI).
-if ENV["METANORMA_CI_EDGE"]
-  gem "lutaml-model", github: "lutaml/lutaml-model", branch: "main"
-  gem "unitsml", github: "metanorma/unitsml", branch: "main"
-else
-  gem "leptris", "~> 1.9"
-  gem "lutaml-model", "~> 0.8.0", ">= 0.8.22", "< 0.9"
-  gem "moxml", "~> 0.5.30"
-end
+gem "leptris", "~> 1.9"
+gem "lutaml-model", "~> 0.8.175"
+gem "moxml", "~> 0.6.1"
+gem "unitsml", "~> 0.6.15"
