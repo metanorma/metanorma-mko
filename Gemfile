@@ -22,7 +22,13 @@ gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
 #
 # Dependency sources: released gems from rubygems.org, exactly the
 # contract downstream users get — CI and local dev must test that.
+# METANORMA_CI_EDGE=1 (edge.yml) tracks unitsml main. lutaml-model stays on
+# its release: its git repo now serves a monorepo root gemspec.
 gem "leptris", "~> 1.9"
 gem "lutaml-model", "~> 0.8.175"
 gem "moxml", "~> 0.6.1"
-gem "unitsml", "~> 0.6.15"
+if ENV["METANORMA_CI_EDGE"]
+  gem "unitsml", github: "metanorma/unitsml", branch: "main"
+else
+  gem "unitsml", "~> 0.6.15"
+end
